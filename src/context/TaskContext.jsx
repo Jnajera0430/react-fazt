@@ -10,7 +10,7 @@ export function TaskContextProvider(props) {
       {
         title: task.title,
         id: tasks.length,
-        description: task.description,
+       
       },
     ]);
   };
@@ -22,6 +22,14 @@ export function TaskContextProvider(props) {
   const deleteTask = (taskId) => {
     setTask(tasks.filter((task) => task.id !== taskId));
   };
+  const editTask = (taskId) => {
+    tasks.filter((task, index) =>{
+      if (task.id === taskId) {
+        console.log(taskId);  
+      }
+      
+    } );
+  };
   
   return (
     <TaskContext.Provider
@@ -29,6 +37,7 @@ export function TaskContextProvider(props) {
         tasks,
         deleteTask,
         createTask,
+        editTask,
       }}
     >
       {props.children}
