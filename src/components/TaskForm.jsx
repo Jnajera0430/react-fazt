@@ -16,7 +16,7 @@ function TaskForm() {
     
     <div className="80-w-80 flex flex-col" >
         
-        <form action="" onSubmit={handleSubmit}  className=" mx-80 " >
+        <form action="" onSubmit={handleSubmit}  className="mx-auto w-1/5 " >
             <h1  className='text-3xl font-bold capitalize py-4' >Todo App</h1>
             <input type="text" placeholder="Add your new todo" name="" id="" 
                 onChange={(e)=>{

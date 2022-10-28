@@ -4,13 +4,14 @@ export const TaskContext = createContext();
 
 export function TaskContextProvider(props) {
   const [tasks, setTask] = useState([]);
+  
   const createTask = (task) => {
     setTask([
       ...tasks,
       {
         title: task.title,
         id: tasks.length,
-       
+        estado: false,
       },
     ]);
   };
@@ -25,11 +26,14 @@ export function TaskContextProvider(props) {
   const editTask = (taskId) => {
     tasks.filter((task, index) =>{
       if (task.id === taskId) {
-        console.log(taskId);  
+        console.log(taskId);
+       console.log(task.title) 
       }
       
     } );
   };
+
+  
   
   return (
     <TaskContext.Provider
@@ -37,7 +41,7 @@ export function TaskContextProvider(props) {
         tasks,
         deleteTask,
         createTask,
-        editTask,
+        editTask,       
       }}
     >
       {props.children}

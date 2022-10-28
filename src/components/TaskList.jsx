@@ -8,7 +8,7 @@ function TaskList() {
   }
 
   return (
-    <div  className='grid justify-center max-w-full grid-rows-4 text-center gap-2' >
+    <div  className='grid justify-center max-w-full grid-rows-4 text-center gap-2'>
       {tasks.map((task) => (
         <TaskCard key={task.id} task = {task} />
       ))}
