@@ -5,34 +5,35 @@ import { SiEditorconfig } from "react-icons/si";
 import { FiEdit } from "react-icons/fi";
 import "../index.css";
 function TaskCard({ task }) {
-  const { deleteTask, editTask } = useContext(TaskContext);
-  const [estado, setEstado] = useState(false);
+  const { deleteTask, editTask,upDateEstado } = useContext(TaskContext);
   const [form, setForm] = useState(false);
   const [clase, setClase] = useState("label");
   const [value, setValue] = useState('');
   
   
   
-  const checkBox = (e) => {
+  /* const checkBox = (id) => {
     if (estado) {
+      upDateEstado(id)
       setClase("label");
-      setEstado(false);
+      
     } else if (!estado) {
-      setClase("label-underline");
-      setEstado(true);
+      upDateEstado(id); 
+      setClase("label-underline");    
     }
-  };
+  }; */
 
   return (
     <div>
-      <div className="bg-slate-100 w-full p-2 rounded-md flex " id={clase}>
+      <div className="bg-slate-100 w-full p-2 rounded-md flex "  id={task.label}>
         <input
           type="checkbox"
           name="check"
-          checked={estado}
-          onChange={checkBox}
+          checked={task.estado} 
+          onClick={()=>{upDateEstado(task.id)}}
+          readOnly
         />
-        <h1 className="text-xl font-bold w-80 capitalize">{task.title}</h1>
+        <h1 className="text-xl font-bold w-80 ">{task.title}</h1>
         <div className="w-10 flex">
           <button
             className="text-blue-500  pl-2 py-1 rounded-md  hover:text-blue-300"
