@@ -1,15 +1,16 @@
 import { createContext, useState, useEffect } from "react";
-import { tasks as data } from "../data/tasks";
+import {tasks as data} from '../data/tasks'
 export const TaskContext = createContext();
 
 export function TaskContextProvider(props) {
-  const [tasks, setTask] = useState(data);
+  const [tasks, setTask] = useState([]);
   const createTask = (task) => {
     setTask([
       ...tasks,
       {
         id: tasks.length,
         title: task.title,
+        estado: false,
       },
     ]);
   };
@@ -17,28 +18,39 @@ export function TaskContextProvider(props) {
   const deleteTask = (taskId) => {
     setTask(tasks.filter((task) => task.id !== taskId));
   };
-  const editTask = (taskId, value, valueA ) => {
+  const editTask = (taskId, value, valueA) => {
+    let datos = JSON.parse(localStorage.getItem("tasks"));
     if (value.length === 0) {
-      tasks.map((task)=>{
+      datos.map((task) => {
         if (task.id === taskId) {
-          task.title = valueA;        
+          task.title = valueA;
         }
-      })
-    }else{
-      tasks.map((task)=>{
+      });
+    } else {
+      datos.map((task) => {
         if (task.id === taskId) {
-          task.title = value;        
+          task.title = value;
         }
-      })
+      });
     }
-    
+    localStorage.setItem("tasks", JSON.stringify(datos));
+    setTask(datos);
   };
-  useEffect(() => {
-    setTask(data);
-  }, []);
-  useEffect(()=>{
+  const clearStorag=()=>{
+    
 
-  })
+  }
+  useEffect((e) => {
+    let dates = localStorage.getItem("tasks");
+    if (dates) {
+      setTask(JSON.parse(dates));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
   return (
     <TaskContext.Provider
       value={{
@@ -46,6 +58,7 @@ export function TaskContextProvider(props) {
         deleteTask,
         createTask,
         editTask,
+        clearStorag,
       }}
     >
       {props.children}

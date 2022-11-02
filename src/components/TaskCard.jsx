@@ -10,7 +10,7 @@ function TaskCard({ task }) {
   const [form, setForm] = useState(false);
   const [clase, setClase] = useState("label");
   const [value, setValue] = useState('');
-
+  
   
   
   const checkBox = (e) => {
