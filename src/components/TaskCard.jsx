@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { TaskContext } from "../context/TaskContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { SiEditorconfig } from "react-icons/si";
+import { VscEdit } from "react-icons/vsc";
 import { FiEdit } from "react-icons/fi";
 import "../index.css";
+import { editTask } from "../Hooks/EditTask";
+import { deleteTask } from "../Hooks/DeleteTask";
 function TaskCard({ task }) {
-  const { deleteTask, editTask,upDateEstado } = useContext(TaskContext);
+  const { upDateEstado } = useContext(TaskContext);
   const [form, setForm] = useState(false);
   const [clase, setClase] = useState("label");
   const [value, setValue] = useState('');
@@ -66,7 +68,7 @@ function TaskCard({ task }) {
             e.preventDefault();
             editTask(task.id, value,task.title)
             setForm(false)
-            }}><SiEditorconfig/></button>
+            }}><VscEdit/></button>
           </form>
         ) : (
           ""

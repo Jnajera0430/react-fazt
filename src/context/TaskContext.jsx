@@ -5,46 +5,14 @@ export const TaskContext = createContext();
 export function TaskContextProvider(props) {
   const [tasks, setTask] = useState([]);
   const [conteo , setConteo] = useState(0);
-  const createTask = (task) => {
-    setTask([
-      ...tasks,
-      {
-        id: tasks.length,
-        title: task.title,
-        estado: false,
-        label: "",
-      },
-    ]);
-  };
-
-  const deleteTask = (taskId) => {
-    setTask(tasks.filter((task) => task.id !== taskId));
-
-  };
+  
   const deleteAll = ()=>{
 
     let datos = JSON.parse(localStorage.getItem("tasks"));
     setTask(datos.filter((task)=>task.estado !== true));
     
   } 
-  const editTask = (taskId, value, valueA) => {
-    let datos = JSON.parse(localStorage.getItem("tasks"));
-    if (value.length === 0) {
-      datos.map((task) => {
-        if (task.id === taskId) {
-          task.title = valueA;
-        }
-      });
-    } else {
-      datos.map((task) => {
-        if (task.id === taskId) {
-          task.title = value;
-        }
-      });
-    }
-    localStorage.setItem("tasks", JSON.stringify(datos));
-    setTask(datos);
-  };
+  
   
   const upDateEstado=(taskId)=>{
     let dates = JSON.parse(localStorage.getItem("tasks"));
@@ -93,9 +61,6 @@ export function TaskContextProvider(props) {
     <TaskContext.Provider
       value={{ 
         tasks,
-        deleteTask,
-        createTask,
-        editTask,
         upDateEstado,
         deleteAll,
         conteo,

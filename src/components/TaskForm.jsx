@@ -2,14 +2,13 @@ import {useState, useContext} from 'react'
 import {TaskContext} from '../context/TaskContext'
 
 import { GoPlus } from 'react-icons/go';
+import { createTask } from '../Hooks/CreateTask';
 function TaskForm() {
     const [title, setTitle] = useState("");
-    const {createTask} = useContext(TaskContext);
+   /*  const {createTask} = useContext(TaskContext); */
     const handleSubmit = (e)=>{
         e.preventDefault();
-        createTask({
-            title
-        });
+        createTask(title);
         setTitle('');
     }
   return (

@@ -24,6 +24,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
- git push -f git@github.com:Jnajera0430/react-fazt.git main:gh-pages
+ git push -f git@github.com:Jnajera0430/my-react-task-list.git main-2:gh-pages
 
 cd -
