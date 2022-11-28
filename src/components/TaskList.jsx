@@ -3,7 +3,9 @@ import { useContext,useState } from "react";
 import { TaskContext } from "../context/TaskContext";
 function TaskList() {
   const { tasks,conteo,deleteAll } = useContext(TaskContext);
-  if (tasks.length === 0) {
+  const dates = JSON.parse(localStorage.getItem('tasks')); 
+  console.log(dates);
+  if (dates.length === 0) {
     return <h1 className="text-center text-2xl">No hay tareas </h1>;
   }
   const handleSubmit=(e)=>{
@@ -15,7 +17,7 @@ function TaskList() {
     <div className="grid justify-center max-w-full text-center gap-2">
       {
         
-        tasks.map((task) => (
+        dates.map((task) => (
         
         <TaskCard key={task.id} task={task} />
       ))}

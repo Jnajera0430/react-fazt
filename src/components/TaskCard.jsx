@@ -36,6 +36,7 @@ function TaskCard({ task }) {
           readOnly
         />
         <h1 className="text-xl font-bold w-80 ">{task.title}</h1>
+        <p className="text-sm font-light w-80">{task.description}</p>
         <div className="w-10 flex">
           <button
             className="text-blue-500  pl-2 py-1 rounded-md  hover:text-blue-300"
