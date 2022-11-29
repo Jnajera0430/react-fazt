@@ -27,16 +27,22 @@ function TaskCard({ task }) {
 
   return (
     <div>
-      <div className="bg-slate-100 w-full p-2 rounded-md flex "  id={task.label}>
-        <input
-          type="checkbox"
-          name="check"
-          checked={task.estado} 
-          onClick={()=>{upDateEstado(task.id)}}
-          readOnly
-        />
-        <h1 className="text-xl font-bold w-80 ">{task.title}</h1>
-        <p className="text-sm font-light w-80">{task.description}</p>
+      <div className="bg-slate-100 w-full p-2 rounded-md flex flex-col"  id={task.label}>
+        <div className="w-1/4">
+          <input
+            type="checkbox"
+            name="check"
+            checked={task.estado} 
+            onClick={()=>{upDateEstado(task.id)}}
+            readOnly
+          />
+        </div>
+        <div className="3/4">
+          <h1 className="text-xl font-bold w-full ">{task.title}</h1>
+        </div>
+        <div>
+          <p className="text-sm font-light w-80">{task.description}</p>
+        </div>
         <div className="w-10 flex">
           <button
             className="text-blue-500  pl-2 py-1 rounded-md  hover:text-blue-300"
