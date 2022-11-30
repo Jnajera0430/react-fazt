@@ -4,12 +4,15 @@ import App from './App'
 import './index.css'
 import { TaskContextProvider } from './context/TaskContext';
 import { BrowserRouter} from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
 ReactDOM.createRoot(document.getElementById('root')).render(
   
     <TaskContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ChakraProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ChakraProvider>
     </TaskContextProvider>
     
   
