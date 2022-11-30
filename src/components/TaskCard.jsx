@@ -38,7 +38,7 @@ function TaskCard({ task }) {
             readOnly
           />
         </Box>
-        <Flex direction="column">
+        <Flex direction="column" gap={3}>
           <Box id={task.label}>
             <h1 className="text-xl font-bold w-full ">{task.title}</h1>
           </Box>
@@ -49,7 +49,7 @@ function TaskCard({ task }) {
         
         <div className="w-10 flex">
           <button
-            className="text-blue-500  pl-2 py-1 rounded-md  hover:text-blue-300"
+            className="text-blue-500   py-1 rounded-md  hover:text-blue-300"
             onClick={() => {
               if (!form) {
                 setForm(true);

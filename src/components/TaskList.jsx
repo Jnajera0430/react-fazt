@@ -1,6 +1,7 @@
 import TaskCard from "./TaskCard";
 import { useContext,useState } from "react";
 import { TaskContext } from "../context/TaskContext";
+import '../index.css'
 function TaskList() {
   const { tasks,conteo,deleteAll } = useContext(TaskContext);
   const dates = JSON.parse(localStorage.getItem('tasks')); 
@@ -14,14 +15,16 @@ function TaskList() {
   }
   
   return (
-    <div className="grid justify-center max-w-full text-center gap-2">
-      {
-        
-        dates.map((task) => (
-        
-        <TaskCard key={task.id} task={task} />
-      ))}
-      <div className="flex flex-row w-full justify-between pt-16">
+    <div className="grid justify-center w-full text-center gap-2" >
+      <div id="container">
+        {
+          
+          dates.map((task) => (
+          
+          <TaskCard key={task.id} task={task} />
+        ))}
+      </div>
+      <div className="flex flex-row w-full justify-between pt-16" >
         <p className="float-left pt-4 w-3/4">You have {conteo} pending tasks</p>
         <form action="" onSubmit={handleSubmit} className="w-1/4  h-16 flex justify-center">
           <button
