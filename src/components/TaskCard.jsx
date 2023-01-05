@@ -6,7 +6,7 @@ import { FiEdit } from "react-icons/fi";
 import "../index.css";
 import { editTask } from "../Hooks/EditTask";
 import { deleteTask } from "../Hooks/DeleteTask";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useColorModeValue } from "@chakra-ui/react";
 function TaskCard({ task }) {
   const { upDateEstado } = useContext(TaskContext);
   const [form, setForm] = useState(false);
@@ -23,9 +23,9 @@ function TaskCard({ task }) {
       setClase("label-underline");    
     }
   }; */
-
+  const detectedModeDark = useColorModeValue("gray.500","gray.500")
   return (
-    <Flex direction="column" width="100%" mt={10}>
+    <Flex direction="column" width="100%" mt={10} background={detectedModeDark}>
       <Flex direction="row" height="50px" >
         <Box width="4rem" display="flex" justifyContent="center">
           <input

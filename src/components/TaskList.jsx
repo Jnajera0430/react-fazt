@@ -16,7 +16,7 @@ function TaskList() {
   
   return (
     <div className="grid justify-center w-full text-center gap-2" >
-      <div id="container">
+      <div id="container" >
         {
           
           dates.map((task) => (
